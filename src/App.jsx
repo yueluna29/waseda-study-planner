@@ -210,7 +210,7 @@ function Gantt({phases,sy,sm,onPR,onTR,coll,onTog}){
 }
 
 function Preview({sn,sy,sm,phases,onBack}){
-  const mw=30,mx=Math.max(14,phases[2].end+2);
+  const mw=32,mx=Math.max(14,phases[2].end+2);
   const ys=yearSpans(sy,sm,mx);
   return(
     <div style={{fontFamily:"'Noto Sans JP',sans-serif",background:"#FAFAF5",minHeight:"100vh",padding:24}}>
@@ -255,25 +255,25 @@ function Preview({sn,sy,sm,phases,onBack}){
                 </div>
               </div>);})}
           </div>
-          <div style={{background:"#FFFDF5",borderRadius:10,padding:"14px 12px",border:"1px solid #E8E8E0",overflowX:"auto"}}>
-            <div style={{fontSize:11,fontWeight:700,color:"#475569",marginBottom:8}}>月度规划总览</div>
-            <div style={{minWidth:480}}>
+          <div style={{background:"#FFFDF5",borderRadius:10,padding:"14px 12px",border:"1px solid #E8E8E0"}}>
+            <div style={{fontSize:11,fontWeight:700,color:"#475569",marginBottom:8}}>月度规划総覧</div>
+            <div>
               <div style={{display:"flex",paddingLeft:60,marginBottom:1}}>
-                {ys.map((y,i)=>(<div key={i} style={{width:y.c*mw,textAlign:"center",fontSize:10,fontWeight:700,color:"#475569",borderLeft:i>0?"1.5px solid #D8D8D0":"none"}}>{y.y}年</div>))}
+                {ys.map((y,i)=>(<div key={i} style={{flex:y.c,textAlign:"center",fontSize:9,fontWeight:700,color:"#475569",borderLeft:i>0?"1.5px solid #D8D8D0":"none"}}>{y.y}年</div>))}
               </div>
               <div style={{display:"flex",marginBottom:3,paddingLeft:60}}>
-                {Array.from({length:mx},(_,i)=>(<div key={i} style={{width:mw,flexShrink:0,textAlign:"center",fontSize:9,color:"#64748b",fontWeight:500}}>{gm(sy,sm,i).m}月</div>))}
+                {Array.from({length:mx},(_,i)=>(<div key={i} style={{flex:1,textAlign:"center",fontSize:8,color:"#64748b",fontWeight:500}}>{gm(sy,sm,i).m}月</div>))}
               </div>
               {phases.map((ph,pi)=>(
                 <div key={pi} style={{marginBottom:1}}>
                   <div style={{display:"flex",alignItems:"center",height:16}}>
                     <div style={{width:60,fontSize:8,fontWeight:700,color:PC[pi],paddingRight:4,textAlign:"right",flexShrink:0}}>{PN[pi]}</div>
-                    <div style={{flex:1,display:"flex"}}>{Array.from({length:mx},(_,i)=>{const ins=i>=ph.start&&i<=ph.end;return(<div key={i} style={{width:mw,flexShrink:0,height:12,background:ins?PC[pi]:"transparent",borderRadius:i===ph.start?"2px 0 0 2px":i===ph.end?"0 2px 2px 0":0,opacity:0.75}}/>);})}</div>
+                    <div style={{flex:1,display:"flex"}}>{Array.from({length:mx},(_,i)=>{const ins=i>=ph.start&&i<=ph.end;return(<div key={i} style={{flex:1,height:12,background:ins?PC[pi]:"transparent",borderRadius:i===ph.start?"2px 0 0 2px":i===ph.end?"0 2px 2px 0":0,opacity:0.75}}/>);})}</div>
                   </div>
                   {ph.tasks.map((tk,ti)=>(
                     <div key={ti} style={{display:"flex",alignItems:"center",height:13}}>
                       <div style={{width:60,fontSize:7,color:"#64748b",paddingRight:4,textAlign:"right",flexShrink:0,overflow:"hidden",whiteSpace:"nowrap",textOverflow:"ellipsis"}}>{tk.name}</div>
-                      <div style={{flex:1,display:"flex"}}>{Array.from({length:mx},(_,i)=>{const ins=i>=tk.start&&i<=tk.end;return(<div key={i} style={{width:mw,flexShrink:0,height:8,background:ins?PC[pi]+"44":"transparent",borderRadius:i===tk.start?"1px 0 0 1px":i===tk.end?"0 1px 1px 0":0,borderTop:ins?`1.5px solid ${PC[pi]}88`:"1.5px solid transparent",borderBottom:ins?`1.5px solid ${PC[pi]}88`:"1.5px solid transparent"}}/>);})}</div>
+                      <div style={{flex:1,display:"flex"}}>{Array.from({length:mx},(_,i)=>{const ins=i>=tk.start&&i<=tk.end;return(<div key={i} style={{flex:1,height:8,background:ins?PC[pi]+"44":"transparent",borderRadius:i===tk.start?"1px 0 0 1px":i===tk.end?"0 1px 1px 0":0,borderTop:ins?`1.5px solid ${PC[pi]}88`:"1.5px solid transparent",borderBottom:ins?`1.5px solid ${PC[pi]}88`:"1.5px solid transparent"}}/>);})}</div>
                     </div>))}
                 </div>))}
             </div>
