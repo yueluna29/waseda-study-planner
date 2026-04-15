@@ -234,24 +234,20 @@ function Preview({sn,sy,sm,phases,onBack}){
               <div style={{textAlign:"left"}}><div style={{fontSize:10,color:"#94a3b8",marginBottom:1}}>规划期间</div><div style={{fontSize:15,fontWeight:700,color:"#1e293b"}}>{gm(sy,sm,phases[0].start).f} 〜 {gm(sy,sm,phases[2].end).f}</div></div>
             </div>
           </div>
-          <div style={{position:"relative",padding:"0 16px",marginBottom:28}}>
-            <div style={{position:"absolute",left:35,top:0,bottom:0,width:3,background:"#E8E8E0",borderRadius:2}}/>
+          <div style={{marginBottom:28}}>
             {phases.map((ph,pi)=>{const sl=gm(sy,sm,ph.start),el=gm(sy,sm,ph.end);return(
-              <div key={pi} style={{position:"relative",marginBottom:22,paddingLeft:52}}>
-                <div style={{position:"absolute",left:22,top:6,width:26,height:26,borderRadius:"50%",background:PC[pi],color:"#fff",display:"flex",alignItems:"center",justifyContent:"center",fontSize:13,fontWeight:900,zIndex:1,boxShadow:`0 2px 6px ${PC[pi]}44`}}>{pi+1}</div>
-                <div style={{background:PL[pi],borderRadius:10,padding:"12px 14px",borderLeft:`4px solid ${PC[pi]}`}}>
-                  <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:8,flexWrap:"wrap",gap:4}}>
-                    <div><span style={{fontWeight:900,fontSize:14,color:PC[pi]}}>{PN[pi]}</span><span style={{fontSize:10,color:"#64748b",marginLeft:6}}>{PS[pi]}</span></div>
-                    <span style={{fontSize:10,color:PC[pi],fontWeight:600,background:"#fff",padding:"2px 8px",borderRadius:10}}>{sl.f} 〜 {el.f}</span>
-                  </div>
-                  <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"4px 12px"}}>
-                    {ph.tasks.map((tk,ti)=>(
-                      <div key={ti} style={{display:"flex",alignItems:"center",gap:6,fontSize:11,color:"#334155"}}>
-                        <div style={{width:4,height:4,borderRadius:"50%",background:PC[pi],flexShrink:0}}/>
-                        <span style={{flex:1}}>{tk.name}</span>
-                        <span style={{fontSize:9,color:"#94a3b8",flexShrink:0}}>{gm(sy,sm,tk.start).s}〜{gm(sy,sm,tk.end).s}</span>
-                      </div>))}
-                  </div>
+              <div key={pi} style={{background:"#fff",borderRadius:12,border:`2px solid ${PL[pi]}`,overflow:"hidden",marginBottom:16,boxShadow:"0 1px 3px rgba(0,0,0,0.05)"}}>
+                <div style={{background:`linear-gradient(135deg,${PC[pi]},${PC[pi]}cc)`,padding:"12px 16px",color:"#fff",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:6}}>
+                  <div><div style={{fontWeight:900,fontSize:15}}>{PN[pi]}</div><div style={{fontSize:10,opacity:0.8}}>{PS[pi]}</div></div>
+                  <div style={{background:"rgba(255,255,255,0.2)",borderRadius:16,padding:"3px 12px",fontSize:11,fontWeight:500}}>{sl.f} 〜 {el.f}</div>
+                </div>
+                <div style={{padding:"10px 14px"}}>
+                  {ph.tasks.map((tk,ti)=>(
+                    <div key={ti} style={{display:"flex",alignItems:"center",gap:8,padding:"7px 10px",borderRadius:6,marginBottom:3,background:ti%2===0?PL[pi]+"55":"transparent"}}>
+                      <div style={{width:20,height:20,borderRadius:"50%",background:PC[pi]+"18",color:PC[pi],display:"flex",alignItems:"center",justifyContent:"center",fontSize:10,fontWeight:700,flexShrink:0}}>{ti+1}</div>
+                      <span style={{flex:1,fontSize:12,color:"#1e293b"}}>{tk.name}</span>
+                      <span style={{fontSize:10,color:"#94a3b8",flexShrink:0}}>{gm(sy,sm,tk.start).s}〜{gm(sy,sm,tk.end).s}</span>
+                    </div>))}
                 </div>
               </div>);})}
           </div>
@@ -345,13 +341,11 @@ export default function App(){
   return(
     <div style={{fontFamily:"'Noto Sans JP',sans-serif",background:"#FFFDF5",minHeight:"100vh",padding:"20px 20px 60px"}}>
       <div style={{maxWidth:1100,margin:"0 auto"}}>
-        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:20,flexWrap:"wrap",gap:10}}>
-          <div style={{display:"flex",alignItems:"center",gap:12}}>
+        <div style={{marginBottom:20}}>
+          <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:10,flexWrap:"wrap"}}>
             <button onClick={()=>setStep("input")} style={{background:"#fff",border:"1px solid #E8E8E0",borderRadius:8,padding:"6px 12px",cursor:"pointer",fontSize:12,color:"#64748b",fontFamily:"'Noto Sans JP',sans-serif",display:"flex",alignItems:"center",gap:4}}><ArrowLeft size={14}/> 返回</button>
-            <img src={LOGO} alt="logo" style={{height:40,objectFit:"contain"}}/>
-            <div>
-              <div style={{fontSize:17,fontWeight:900,color:"#1e293b"}}>{sn} 的考学規画</div>
-            </div>
+            <img src={LOGO} alt="logo" style={{height:32,objectFit:"contain"}}/>
+            <div style={{fontSize:15,fontWeight:900,color:"#1e293b"}}>{sn} 的考学規画</div>
           </div>
           <div style={{display:"flex",gap:8}}>
             <button onClick={()=>setPrev(true)} style={{background:"#fff",border:"1px solid #E8E8E0",borderRadius:8,padding:"7px 16px",cursor:"pointer",fontSize:12,fontWeight:600,color:"#475569",fontFamily:"'Noto Sans JP',sans-serif",display:"flex",alignItems:"center",gap:5}}><Eye size={14}/> 预览</button>
