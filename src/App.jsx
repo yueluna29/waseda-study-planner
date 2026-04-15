@@ -341,17 +341,13 @@ export default function App(){
   return(
     <div style={{fontFamily:"'Noto Sans JP',sans-serif",background:"#FFFDF5",minHeight:"100vh",padding:"20px 20px 60px"}}>
       <div style={{maxWidth:1100,margin:"0 auto"}}>
-        <div style={{marginBottom:20}}>
-          <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:10}}>
-            <button onClick={()=>setStep("input")} style={{background:"#fff",border:"1px solid #E8E8E0",borderRadius:8,padding:"6px 12px",cursor:"pointer",fontSize:12,color:"#64748b",fontFamily:"'Noto Sans JP',sans-serif",display:"flex",alignItems:"center",gap:4}}><ArrowLeft size={14}/> 返回</button>
-            <div style={{display:"flex",gap:8}}>
-              <button onClick={()=>setPrev(true)} style={{background:"#fff",border:"1px solid #E8E8E0",borderRadius:8,padding:"7px 16px",cursor:"pointer",fontSize:12,fontWeight:600,color:"#475569",fontFamily:"'Noto Sans JP',sans-serif",display:"flex",alignItems:"center",gap:5}}><Eye size={14}/> 预览</button>
-              <button onClick={()=>setPrev(true)} style={{background:"#364C84",color:"#fff",border:"none",borderRadius:8,padding:"7px 18px",cursor:"pointer",fontSize:12,fontWeight:700,fontFamily:"'Noto Sans JP',sans-serif",boxShadow:"0 2px 8px rgba(30,58,110,0.3)",display:"flex",alignItems:"center",gap:5}}><FileText size={14}/> 导出PDF</button>
-            </div>
-          </div>
-          <div style={{display:"flex",alignItems:"center",gap:10}}>
-            <img src={LOGO} alt="logo" style={{height:32,objectFit:"contain"}}/>
-            <div style={{fontSize:16,fontWeight:900,color:"#1e293b"}}>{sn} 的考学規画</div>
+        <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:20,flexWrap:"wrap"}}>
+          <button onClick={()=>setStep("input")} style={{background:"#fff",border:"1px solid #E8E8E0",borderRadius:8,padding:"6px 12px",cursor:"pointer",fontSize:12,color:"#64748b",fontFamily:"'Noto Sans JP',sans-serif",display:"flex",alignItems:"center",gap:4}}><ArrowLeft size={14}/> 返回</button>
+          <img src={LOGO} alt="logo" style={{height:28,objectFit:"contain"}}/>
+          <div style={{fontSize:15,fontWeight:900,color:"#1e293b",flex:1,minWidth:120}}>{sn} 的考学規画</div>
+          <div style={{display:"flex",gap:8}}>
+            <button onClick={()=>setPrev(true)} style={{background:"#fff",border:"1px solid #E8E8E0",borderRadius:8,padding:"7px 14px",cursor:"pointer",fontSize:12,fontWeight:600,color:"#475569",fontFamily:"'Noto Sans JP',sans-serif",display:"flex",alignItems:"center",gap:5}}><Eye size={14}/> 预览</button>
+            <button onClick={()=>setPrev(true)} style={{background:"#364C84",color:"#fff",border:"none",borderRadius:8,padding:"7px 16px",cursor:"pointer",fontSize:12,fontWeight:700,fontFamily:"'Noto Sans JP',sans-serif",boxShadow:"0 2px 8px rgba(30,58,110,0.3)",display:"flex",alignItems:"center",gap:5}}><FileText size={14}/> 导出PDF</button>
           </div>
         </div>
         {phases&&(
