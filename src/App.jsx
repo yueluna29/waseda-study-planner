@@ -210,7 +210,7 @@ function Gantt({phases,sy,sm,onPR,onTR,coll,onTog}){
 }
 
 function Preview({sn,sy,sm,phases,onBack}){
-  const mw=28,mx=Math.max(14,phases[2].end+2);
+  const mw=30,mx=Math.max(14,phases[2].end+2);
   const ys=yearSpans(sy,sm,mx);
   return(
     <div style={{fontFamily:"'Noto Sans JP',sans-serif",background:"#FAFAF5",minHeight:"100vh",padding:24}}>
